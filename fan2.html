@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Challengers Bengaluru - Official Fan Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #632525;
+            --dark: #000000;
+            --gold: #FFD700;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', 'Montserrat', -apple-system, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            background: #0a0e27;
+        }
+
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(-10px); } 50% { transform: translateY(10px); } }
+ 
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cart-badge {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .cart-badge:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: var(--primary);
+            color: var(--gold);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
+        /* ===== HERO CAROUSEL ===== */
+        .hero-section {
+            position: relative;
+            height: 700px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(218, 23, 16, 0.2), rgba(0, 0, 0, 0.8));
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(218, 23, 16, 0.3));
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            animation: slideInUp 0.8s ease;
+        }
+
+        .slide-content h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .slide-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(218, 23, 16, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(218, 23, 16, 0.5);
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(218, 23, 16, 0.1), rgba(255, 215, 0, 0.05));
+            padding: 60px 30px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: rgba(235, 235, 235, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(218, 23, 16, 0.2);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TEAM ROSTER ===== */
+        .roster-section {
+            max-width: 1400px;
+            margin: 100px auto 80px;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, rgba(127, 117, 117, 0.1), rgba(0, 0, 0, 0.3));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: slideInUp 0.6s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(218, 23, 16, 0.3);
+        }
+
+        .player-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .player-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 30%, rgba(255, 215, 0, 0.1));
+            pointer-events: none;
+        }
+
+        .player-info {
+            padding: 20px;
+        }
+
+        .player-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .player-role {
+            display: inline-block;
+            background: rgba(255, 246, 245, 0.3);
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .player-stats-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .player-stat {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .player-stat-value {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* ===== HIGHLIGHTS SECTION ===== */
+        .highlights-section {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(218, 23, 16, 0.1));
+            padding: 80px 30px;
+            margin: 80px 0;
+        }
+
+        .highlights-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-card {
+            position: relative;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .video-overlay {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .video-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 20px;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .video-title {
+            transform: translateY(0);
+        }
+
+        .video-title h3 {
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        /* ===== NEWS SECTION ===== */
+        .news-section {
+    max-width: 1400px;
+    margin: 100px auto;
+    padding: 0 30px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.news-card {
+    background: rgba(236, 0, 0, 0.05);
+    border: 1px solid rgba(187, 183, 160, 0.15);
+    border-radius: 12px;
+    overflow: hidden; /* ensures image touches border edges */
+    transition: all 0.3s ease;
+    animation: slideInUp 0.6s ease;
+}
+
+.news-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--gold);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(218, 23, 16, 0.2);
+}
+
+/* 👇 Ensures images stretch to full card width and height */
+.news-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* maintain proportions, fill fully */
+    display: block;
+    border-bottom: 2px solid var(--primary);
+}
+
+/* fallback background if image fails */
+.news-image {
+    background: linear-gradient(135deg, #6b4423, var(--primary));
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* content styling */
+.news-content {
+    padding: 25px;
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.news-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.news-excerpt {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    color: var(--gold);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    color: var(--primary);
+}
+
+        /* ===== MERCHANDISE SECTION ===== */
+        .merchandise-section {
+            max-width: 1400px;
+            margin: 100px auto;
+            padding: 0 30px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(127, 117, 117, 0.1), rgba(0, 0, 0, 0.3));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(218, 23, 16, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .cart-btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(218, 23, 16, 0.3);
+        }
+
+        /* ===== CART MODAL ===== */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: #1a1e3f;
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideInUp 0.3s ease;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+        }
+
+        .cart-header h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        .close-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .remove-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .remove-btn:hover {
+            background: #ff6b6b;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .cart-total {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 900;
+        }
+
+        .checkout-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary), #ff6b6b);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(218, 23, 16, 0.5);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(218, 23, 16, 0.1));
+            border-top: 2px solid var(--primary);
+            padding: 60px 30px 30px;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section a, .footer-section p {
+            color: #aaa;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+            margin-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(218, 23, 16, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.8rem; }
+            .slide-content h2 { font-size: 2rem; }
+            .hero-section { height: 400px; }
+            .roster-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cube-bg">
+  <div class="cube"></div>
+  <div class="cube"></div>
+  <div class="cube"></div>
+  <div class="cube"></div>
+</div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+               <img src="assets/logo.webp" alt="RCB Logo" 
+     style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+
+                RCB
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#squad">Squad</a></li>
+                    <li><a href="#highlights">Highlights</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#merchandise">Merchandise</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="cart-badge" onclick="toggleCart()">
+                    🛒
+                    <div class="cart-count" id="cartCount">0</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <section class="hero-section" id="home">
+        <div class="carousel-container">
+            <div class="carousel-slide active" style="background: linear-gradient(135deg, rgba(218, 23, 16, 0.3), rgba(0, 0, 0, 0.7));">
+                <div class="slide-content">
+                    <h2>Royal Challengers Bengaluru</h2>
+                    <p>Ee Sala Cup Namde</p>
+                    <button class="cta-btn">Watch Highlights</button>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background: linear-gradient(135deg, rgba(218, 23, 16, 0.3), rgba(0, 0, 0, 0.7));">
+                <div class="slide-content">
+                    <h2>Play Bold, Play Fearless</h2>
+                    <p>The Spirit of Champions</p>
+                    <button class="cta-btn">Explore Team</button>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background: linear-gradient(135deg, rgba(218, 23, 16, 0.3), rgba(0, 0, 0, 0.7));">
+                <div class="slide-content">
+                    <h2>IPL Legends Rise Here</h2>
+                    <p>Join the Red Army</p>
+                    <button class="cta-btn">Support RCB</button>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <div class="dot active" onclick="goToSlide(0)"></div>
+                <div class="dot" onclick="goToSlide(1)"></div>
+                <div class="dot" onclick="goToSlide(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-number">3</div>
+                <div class="stat-label">Finals Appearances</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">17</div>
+                <div class="stat-label">Seasons in IPL</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-number">263</div>
+                <div class="stat-label">Highest Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">28</div>
+                <div class="stat-label">Squad Size</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Roster -->
+    <section class="roster-section" id="squad">
+        <h1 class="section-title">Meet Our Squad</h1>
+        <p class="section-subtitle">The finest players bringing passion, skill, and excellence</p>
+        <div class="roster-grid">
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="assets/vk.jpg" alt="Virat Kohli">
+                </div>
+                <div class="player-info">
+                    <div class="player-name">Virat Kohli</div>
+                    <div class="player-role">Captain • Batter</div>
+                    <div class="player-stats-mini">
+                        <div class="player-stat"><div class="player-stat-value">7000+</div> Runs</div>
+                        <div class="player-stat"><div class="player-stat-value">37.2</div> Avg</div>
+                        <div class="player-stat"><div class="player-stat-value">131</div> SR</div>
+                        <div class="player-stat"><div class="player-stat-value">210</div> Matches</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="assets/ab.jpg" alt="">
+                     </div>
+                <div class="player-info">
+                    <div class="player-name">AB de Villiers</div>
+                    <div class="player-role">Legend • Batter</div>
+                    <div class="player-stats-mini">
+                        <div class="player-stat"><div class="player-stat-value">5162</div> Runs</div>
+                        <div class="player-stat"><div class="player-stat-value">52.1</div> Avg</div>
+                        <div class="player-stat"><div class="player-stat-value">151</div> SR</div>
+                        <div class="player-stat"><div class="player-stat-value">156</div> Matches</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="gm.jpg" alt="">
+                </div>
+                <div class="player-info">
+                    <div class="player-name">Faf du Plessis</div>
+                    <div class="player-role">Vice-Captain • Batter</div>
+                    <div class="player-stats-mini">
+                        <div class="player-stat"><div class="player-stat-value">2400</div> Runs</div>
+                        <div class="player-stat"><div class="player-stat-value">41.5</div> Avg</div>
+                        <div class="player-stat"><div class="player-stat-value">143</div> SR</div>
+                        <div class="player-stat"><div class="player-stat-value">89</div> Matches</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="assets/glen.jpg" alt="">
+                    </div>
+                <div class="player-info">
+                    <div class="player-name">Glenn Maxwell</div>
+                    <div class="player-role">All-rounder</div>
+                    <div class="player-stats-mini">
+                        <div class="player-stat"><div class="player-stat-value">1200</div> Runs</div>
+                        <div class="player-stat"><div class="player-stat-value">35.3</div> Avg</div>
+                        <div class="player-stat"><div class="player-stat-value">168</div> SR</div>
+                        <div class="player-stat"><div class="player-stat-value">45</div> Matches</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="assets/yd.jpg" alt="">
+                   </div>
+                <div class="player-info">
+                    <div class="player-name">Yash Dayal</div>
+                    <div class="player-role">Bowler</div>
+                    <div class="player-stats-mini">
+                        <div class="player-stat"><div class="player-stat-value">45</div> Wickets</div>
+                        <div class="player-stat"><div class="player-stat-value">8.2</div> Economy</div>
+                        <div class="player-stat"><div class="player-stat-value">22.4</div> Avg</div>
+                        <div class="player-stat"><div class="player-stat-value">38</div> Matches</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-image">
+                    <img src="assets/cg.jpg" alt="">
+                </div>
+                <div class="player-info">
+                    <div class="player-name">Cameron Green</div>
+                    <div class="player-role">All-rounder</div>
+                    <div class="player-stats-mini">
+                        <div class="player-stat"><div class="player-stat-value">890</div> Runs</div>
+                        <div class="player-stat"><div class="player-stat-value">32.1</div> Avg</div>
+                        <div class="player-stat"><div class="player-stat-value">155</div> SR</div>
+                        <div class="player-stat"><div class="player-stat-value">28</div> Matches</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights-section" id="highlights">
+        <div class="highlights-container">
+            <h1 class="section-title">Latest Highlights</h1>
+            <p class="section-subtitle">Watch the most exciting moments from our matches</p>
+            <div class="highlights-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/vs century.jpg" alt="Video Highlight">
+                    </div>
+                    <div class="video-overlay">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-title">
+                        <h3>Virat's Century - Match Highlights</h3>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/ab 360.jpg" alt="Video Highlight">
+                    </div>
+                    <div class="video-overlay">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-title">
+                        <h3>AB's 360 Degree Sixes</h3>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="assets/bowling.jpg" alt="Video Highlight">
+                    </div>
+                    <div class="video-overlay">
+                        <div class="play-btn">▶</div>
+                    </div>
+                    <div class="video-title">
+                        <h3>Bowling Masterclass - 5 Wickets</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section" id="news">
+        <h1 class="section-title">Latest News</h1>
+        <p class="section-subtitle">Stay updated with RCB news and updates</p>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image"><img src="assets/news1.jpg" alt=""></div>
+                <div class="news-content">
+                    <div class="news-date">Oct 28, 2025</div>
+                    <div class="news-title">RCB Clinches Thrilling Victory in Last Over</div>
+                    <div class="news-excerpt">An incredible display of nerve and skill as RCB chased down a mammoth total with just 2 balls to spare...</div>
+                   <a href="https://cricketaddictor.com/cricket-news/rcb-clinches-thrilling-victory-in-last-over-273300/" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image"><img src="news 2.webp" alt=""></div>
+                <div class="news-content">
+                    <div class="news-date">Oct 26, 2025</div>
+                    <div class="news-title">Virat Kohli Named Player of the Series</div>
+                    <div class="news-excerpt">The RCB captain showcased exceptional batting form throughout the tournament, scoring 5 half-centuries...</div>
+                <a href="https://www.espncricinfo.com/story/virat-kohli-named-player-of-the-series-2025-1400000" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image"><img src="assets/news 3.jpg" alt=""></div>
+                <div class="news-content">
+                    <div class="news-date">Oct 24, 2025</div>
+                    <div class="news-title">Glenn Maxwell's Explosive Innings Stuns Opposition</div>
+                    <div class="news-excerpt">Big Glenn blazed 89 runs in just 45 balls with 8 sixes, turning the match on its head in the final overs...</div>
+                    <a href="https://www.espncricinfo.com/story/glenn-maxwell-explosive-innings-2025-1400001" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image"><img src="assets/news 4.webp" alt=""></div>
+                <div class="news-content">
+                    <div class="news-date">Oct 22, 2025</div>
+                    <div class="news-title">New Squad Announcement for Upcoming Series</div>
+                    <div class="news-excerpt">RCB announces its 15-member squad for the upcoming international T20 series with exciting new talents...</div>
+                    <a href="https://www.espncricinfo.com/story/rcb-new-squad-announcement-2025-1400002" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image"><img src="assets/news 5.jpg" alt=""></div>
+                <div class="news-content">
+                    <div class="news-date">Oct 20, 2025</div>
+                    <div class="news-title">Yash Dayal's Breakthrough Performance</div>
+                    <div class="news-excerpt">The young fast bowler took 4 wickets for just 22 runs, earning praise from coaching staff and fans...</div>
+                    <a href="https://www.espncricinfo.com/story/yash-dayal-breakthrough-performance-2025-1400005" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image"><img src="assets/news 6.webp" alt=""></div>
+                <div class="news-content">
+                    <div class="news-date">Oct 18, 2025</div>
+                    <div class="news-title">RCB Foundation Launches Community Cricket Program</div>
+                    <div class="news-excerpt">A new initiative to develop grassroots cricket talent in Bengaluru with training camps for underprivileged youth...</div>
+                    <div class="read-more">Read More →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section class="merchandise-section" id="merchandise">
+        <h1 class="section-title">Official RCB Merchandise</h1>
+        <p class="section-subtitle">Show your support with exclusive RCB gear</p>
+        <div class="roster-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="assets/download.jpg" alt="RCB Jersey">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">RCB Official Jersey</div>
+                    <div class="product-price">₹1,299</div>
+                    <input type="number" min="1" value="1" class="qty">
+
+                    <button class="cart-btn" onclick="addToCart('RCB Official Jersey', 1299)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="assets/cap.jpg" alt="RCB Cap">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">RCB Cap</div>
+                    <div class="product-price">₹499</div>
+                    <input type="number" min="1" value="1" class="qty">
+
+                    <button class="cart-btn" onclick="addToCart('RCB Cap', 499)">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="assets/mug.jpg" alt="RCB Mug">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">RCB Coffee Mug</div>
+                    <div class="product-price">₹399</div>
+                    <input type="number" min="1" value="1" class="qty">
+
+                    <button class="cart-btn" onclick="addToCart('RCB Coffee Mug', 399)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>🛒 Your Cart</h2>
+                <button class="close-btn" onclick="toggleCart()">✕</button>
+            </div>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About RCB</h3>
+                <p>Royal Challengers Bengaluru is one of the most successful franchises in Indian Premier League history.</p>
+                <p>Founded in 2008, RCB has consistently delivered thrilling cricket and world-class entertainment.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">Official Website</a>
+                <a href="#">Ticket Booking</a>
+                <a href="#">Merchandise Store</a>
+                <a href="#">Player Auctions</a>
+                <a href="#">Match Schedule</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 M. Chinnaswamy Stadium, Bengaluru</p>
+                <p>📧 info@rcb.co.in</p>
+                <p>📞 +91-80-XXXX-XXXX</p>
+                <h3 style="margin-top: 30px;">Follow Us</h3>
+                <div class="social-links">
+                    <div class="social-link">📱</div>
+                    <div class="social-link">🐦</div>
+                    <div class="social-link">📺</div>
+                    <div class="social-link">🎬</div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to stay updated with latest news, match schedules, and exclusive content.</p>
+                <input type="email" placeholder="Enter your email" style="width: 100%; padding: 10px; border: 1px solid rgba(255, 215, 0, 0.3); background: rgba(0, 0, 0, 0.3); color: white; border-radius: 6px; margin-top: 10px; font-family: 'Poppins', sans-serif;">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Royal Challengers Bengaluru. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Made with ❤️ by RCB Fan Community | Privacy Policy | Terms & Conditions</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+            currentSlide = n;
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto rotate carousel
+        setInterval(nextSlide, 5000);
+
+        // Cart functionality
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartCount();
+            updateCartDisplay();
+            alert(`${name} added to cart!`);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            updateCartDisplay();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+                cartTotal.textContent = '₹0';
+                return;
+            }
+
+            let total = 0;
+            cartItems.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            }).join('');
+            
+            cartTotal.textContent = `₹${total}`;
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('active');
+            updateCartDisplay();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            alert(`Proceeding to checkout with total amount: ₹${total}\n\nThis is a demo. Thank you for your support!`);
+            cart = [];
+            updateCartCount();
+            toggleCart();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card, .player-card, .news-card, .product-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            observer.observe(el);
+        });
+        
+
+    </script>
+</body>
+</html>
+
+
